@@ -1,16 +1,19 @@
-version: 2.4
-
+version: 2.1
+workflows:
+  test-deploy:
+  jobs:
+    - test
 jobs:
   build:
     docker:
-      - image: node:18.13.0
-    working_directory: ~/mybrand/learn-express
+      - image: cimg/node:19.6.0
     steps:
-      - checkout:
-          path: ~/mybrand
+      - checkout
+      - node --version
+      
       - run:
           name: Install dependencies
           command: npm install
       - run:
           name: Run tests
-          command: npm test --coverage -- --verbose
+          command: npm test --coverage 
