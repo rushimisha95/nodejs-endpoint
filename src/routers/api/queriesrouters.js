@@ -15,5 +15,5 @@ router
   .get(getAllQueries) //verifyUserToken
   .post(validate(query_schema), createNewQuery);
 
-router.route("/:id").delete(verifyUserToken, deleteQuery);
+router.route("/:id").delete(deleteQuery); //verifyUserToken
 export default router;

@@ -6,7 +6,7 @@ const commentSchema = mongoose.Schema({
   },
   names: {
     type: String,
-    required: false,
+    required: true,
   },
   comment: {
     type: String,

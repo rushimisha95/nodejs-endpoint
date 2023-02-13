@@ -32,6 +32,7 @@ export const query_schema = Joi.object().keys({
   date: Joi.string().required(),
 });
 export const comment_schema = Joi.object().keys({
+  names: Joi.string().min(3).max(20).required(),
   comment: Joi.string().min(5).required(),
 });
 export default {

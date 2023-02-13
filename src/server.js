@@ -37,7 +37,7 @@ app.use("/api/v1/queries", query_routes);
 
 mongoose.connection.once("open", () => {
   console.log("-->Connected to mongoDB");
-  app.listen(4000, () => {
+  app.listen(3000, () => {
     console.log("(:). server is up and running!");
   });
 });

@@ -24,16 +24,16 @@ export const getAllBlogs = async (req, res) => {
 };
 
 export const createNewBlog = async (req, res) => {
-  // let imagePath = req.file.path;
+  const imagePath = req.file.path;
 
-  //const uploaded_img = await cloudinaryUpload(imagePath);
+  const uploaded_img = await cloudinaryUpload(imagePath);
   try {
     const result = await Blog.create({
       title: req.body.title,
       body: req.body.body,
       //author: req.user.author,
       //date: req.body.date,
-      //image: uploaded_img.url,
+      image: uploaded_img.url,
     });
 
     res.status(201).json(result);
