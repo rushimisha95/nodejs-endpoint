@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1676298151536" clover="3.2.0">
-  <project timestamp="1676298151536" name="All files">
+<coverage generated="1676300283519" clover="3.2.0">
+  <project timestamp="1676300283519" name="All files">
     <metrics statements="213" coveredstatements="119" conditionals="54" coveredconditionals="12" methods="28" coveredmethods="15" elements="295" coveredelements="146" complexity="0" loc="213" ncloc="213" packages="6" files="18" classes="18"/>
     <package name="src">
       <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
@@ -44,8 +44,8 @@
         <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
       </file>
       <file name="passportConfig.js" path="C:\Users\PC\Desktop\nodejs-endpoint\src\config\passportConfig.js">

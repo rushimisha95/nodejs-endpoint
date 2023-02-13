@@ -7,6 +7,7 @@ import model from "../models/user.js";
 import Blog from "../models/blogs.js";
 import Comment from "../models/comment.js";
 import { commentToBlog } from "../controllers/commentcontroller.js";
+
 jest.setTimeout(2000);
 const comment = {
   comment: "Johnbook",

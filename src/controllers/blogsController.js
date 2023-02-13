@@ -1,6 +1,6 @@
 import Blog from "../models/blogs.js"; // model/Blog.js
 import Comment from "../models/comment.js";
-import cloudinaryUpload from "../config/cloudinaryUpload.js"; //config/cloudinaryUpload.js
+import cloudinaryUpload from "../config/cloudinaryUpload.js"; //config/cloudinaryUpload.j
 
 export const getAllBlogs = async (req, res) => {
   const blogs = await Blog.find();
@@ -12,7 +12,7 @@ export const getAllBlogs = async (req, res) => {
     let item = {
       id: blog._id,
       title: blog.title,
-      //author: blog.author,
+      author: blog.author,
       body: blog.body,
       date: blog.date,
       likes: blog.likes.length,
@@ -24,6 +24,7 @@ export const getAllBlogs = async (req, res) => {
 };
 
 export const createNewBlog = async (req, res) => {
+  if (!req?.file) return res.status(400).json({ message: "File required" });
   const imagePath = req.file.path;
 
   const uploaded_img = await cloudinaryUpload(imagePath);
@@ -31,8 +32,8 @@ export const createNewBlog = async (req, res) => {
     const result = await Blog.create({
       title: req.body.title,
       body: req.body.body,
-      //author: req.user.author,
-      //date: req.body.date,
+      author: req.body.author,
+      date: req.body.date,
       image: uploaded_img.url,
     });
 
