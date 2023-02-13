@@ -214,5 +214,14 @@ describe("testing all end pooint", () => {
       //   expect(res.json).toHaveBeenCalledWith({
       //     message: "comment posted",
     });
+    let blog_id = "63e64fcded0536b9af6dc551";
+    describe("TEST: Blog likes", () => {
+      it("Should register a like to a blog by ID", async () => {
+        const res = await request(app).get(`/api/v1/blogs/${blog_id}/likes`);
+        //.set("Authorization", `Bearer ${_TOKEN}`);
+
+        expect(res.statusCode).toEqual(404);
+      });
+    });
   });
 });
