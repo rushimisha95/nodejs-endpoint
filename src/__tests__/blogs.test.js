@@ -17,7 +17,7 @@ const blog = {
   author: "rushimisha",
 };
 const blogWithoutTitle = {
-  body: "Me Boligno Abdul",
+  body: "Me rushimisha ",
 };
 describe("testing all end pooint", () => {
   beforeAll(async () => {
