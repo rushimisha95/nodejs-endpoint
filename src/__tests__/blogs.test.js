@@ -26,7 +26,7 @@ describe("testing all end pooint", () => {
   afterAll(async () => {
     await mongoose.connection.close();
   });
-  test("blog created  ", async () => {
+  test("creating blogs  ", async () => {
     const { body } = await request(app)
       .post("/api/v1/blogs")
       .send(blog)
