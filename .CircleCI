@@ -1,13 +1,13 @@
-version: 2.1
-workflows:
-  test-deploy:
-  jobs:
-    - test
 jobs:
   build:
     docker:
-      - image: cimg/node:19.6.0
+      - image: node:18.13.0
+  
     steps:
-      - checkout
-      - node --version
-      -
+      - checkout:
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Run tests
+          command: npm test --coverage
