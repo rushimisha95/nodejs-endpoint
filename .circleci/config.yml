@@ -1,0 +1,13 @@
+jobs:
+  build:
+    docker:
+      - image: node:18.13.0
+
+    steps:
+      - checkout:
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Run tests
+          command: npm test --coverage
