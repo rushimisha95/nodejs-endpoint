@@ -18,10 +18,9 @@
 #   webhooks:
 #     - url: https://coveralls.io/webhook?repo_token=${process.env.COVERALLS_REPO_TOKEN}
 #     environment:
-    
-#    COVERALLS_REPO_TOKEN: 
-   
-   
+
+#    COVERALLS_REPO_TOKEN:
+
 version: 2.4
 jobs:
   build:
@@ -32,7 +31,7 @@ jobs:
     working_directory: ~/nodejs-endpoint/src
     steps:
       - checkout:
-          path: ~/nodejs-endpoint
+          path: ~/
       - run:
           name: Install dependencies
           command: npm install
@@ -41,4 +40,4 @@ jobs:
           command: npm test --coverage -- --verbose
       - run:
           name: Upload coverage to Coveralls
-          command: npx coveralls < coverage/lcov.info
+          command: npx coveralls <coverage/lcov.info
