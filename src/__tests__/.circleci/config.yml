@@ -11,6 +11,9 @@ jobs:
       - run:
           name: Run tests
           command: npm test --coverage
+          - run:
+          name: Upload coverage to Coveralls
+          command: npx coveralls < coverage/lcov.info
 notify:
   webhooks:
     - url: https://coveralls.io/webhook?repo_token=${process.env.COVERALLS_REPO_TOKEN}

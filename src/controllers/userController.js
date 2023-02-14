@@ -1,6 +1,6 @@
 import * as dotenv from "dotenv";
 import bcrypt from "bcrypt";
-import User from "../models/user.js"; // model/User.js
+import model from "../models/user.js";
 import jwt from "jsonwebtoken";
 
 export const handleSignup_simple = async (req, res) => {
@@ -21,19 +21,18 @@ export const handleSignup_simple = async (req, res) => {
 };
 
 export const handleLogin_simple = async (req, res) => {
-  email: req.body.email;
-  // const token = jwt.sign(
-  //   {
-  //     userInfo: {
-  //       //names: req.User.names,
-  //       email: req.body.email,
-  //     },
-  //   },
-  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c, //process.env.JWT_SEKRET",
-  //   { expiresIn: "1h" }
-  //);
+  const token = jwt.sign(
+    {
+      userInfo: {
+        names: req.body.names,
+        email: req.body.email,
+      },
+    },
+    process.env.JWT_SEKRET,
+    { expiresIn: "1h" }
+  );
   let foundUser = req.body;
-  // foundUser.token = token;
+  foundUser.token = token;
   let result = await foundUser.save();
 
   // Creates Secure Cookie with refresh token
@@ -43,11 +42,12 @@ export const handleLogin_simple = async (req, res) => {
   //   sameSite: "None",
   //   maxAge: 60 * 60 * 1000,
   // });
-  return res.json({ message: "login successful" });
+
+  return res.json({ message: "login successful", token: result.token });
 };
 
 export const handleLogout = async (req, res) => {
-  const currentUser = await User.findOne({ email: req.body.email });
+  const currentUser = await model.findOne({ email: req.body.email });
 
   if (!currentUser) return res.sendStatus(400);
 
@@ -57,7 +57,7 @@ export const handleLogout = async (req, res) => {
   res.json({ message: "Logged out" });
 };
 export const getUsers = async (req, res) => {
-  const users = await User.find();
+  const users = await model.find();
 
   if (!users) return res.status(400).json({ message: "No users found" });
 

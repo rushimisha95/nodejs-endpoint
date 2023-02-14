@@ -21,7 +21,11 @@ const router = express.Router();
 router
   .route("/")
   .get(getAllBlogs)
-  .post([upload.single("image")], [validate(blog_schema)], createNewBlog); //upload.single("image")
+  .post(
+    [verifyUserToken, upload.single("image")],
+    [validate(blog_schema)],
+    createNewBlog
+  ); //upload.single("image")
 
 router.route("/:id/comments").post([validate(comment_schema)], commentToBlog); //verifyUserToken
 
