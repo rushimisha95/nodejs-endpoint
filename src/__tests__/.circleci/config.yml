@@ -1,0 +1,18 @@
+jobs:
+  build:
+    docker:
+      - image: node:18.13.0
+
+    steps:
+      - checkout:
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Run tests
+          command: npm test --coverage
+notify:
+  webhooks:
+    - url: https://coveralls.io/webhook?repo_token=${process.env.COVERALLS_REPO_TOKEN}
+    environment:
+      COVERALLS_REPO_TOKEN: MLbOdVJKlIjgo0gCtvxFjrXWz7JWOqJQ0
