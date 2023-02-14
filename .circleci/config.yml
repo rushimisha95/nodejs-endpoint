@@ -31,7 +31,7 @@ jobs:
     working_directory: ~/nodejs-endpoint/src
     steps:
       - checkout:
-          path: ~/
+          path: ~/nodejs-endpoint
       - run:
           name: Install dependencies
           command: npm install
