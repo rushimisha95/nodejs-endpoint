@@ -28,7 +28,7 @@ jobs:
       - image: node:18.13.0
     environment:
       COVERALLS_REPO_TOKEN: MLbOdVJKlIjgo0gCtvxFjrXWz7JWOqJQ0
-    working_directory: ~/nodejs-endpoint/src
+    working_directory: ~/nodejs-endpoint
     steps:
       - checkout:
           path: ~/nodejs-endpoint
@@ -37,7 +37,7 @@ jobs:
           command: npm install
       - run:
           name: Run tests
-          command: npm test --coverage
+          command: npm test --coverage -- --verbose
       - run:
           name: Upload coverage to Coveralls
           command: npx coveralls < coverage/lcov.info
