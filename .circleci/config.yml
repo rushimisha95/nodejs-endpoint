@@ -21,7 +21,7 @@
 
 #    COVERALLS_REPO_TOKEN:
 
-version: 2.4
+version: 2.1
 jobs:
   build:
     docker:
@@ -37,7 +37,7 @@ jobs:
           command: npm install
       - run:
           name: Run tests
-          command: npm test --coverage -- --verbose
+          command: npm test --coverage
       - run:
           name: Upload coverage to Coveralls
-          command: npx coveralls <coverage/lcov.info
+          command: npx coveralls < coverage/lcov.info
